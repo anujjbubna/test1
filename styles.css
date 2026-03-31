@@ -1,0 +1,412 @@
+:root {
+  --bg: #07131f;
+  --bg-soft: #0d2234;
+  --panel: rgba(8, 29, 43, 0.78);
+  --panel-strong: rgba(10, 42, 57, 0.92);
+  --line: rgba(137, 224, 196, 0.22);
+  --text: #ecf8f5;
+  --muted: #b4d6d9;
+  --green: #84d9b3;
+  --green-strong: #4fc08d;
+  --blue: #4da1d8;
+  --blue-soft: #7ec7e8;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(77, 161, 216, 0.22), transparent 30%),
+    radial-gradient(circle at 85% 15%, rgba(132, 217, 179, 0.15), transparent 22%),
+    linear-gradient(180deg, #05101b 0%, #0b1f30 45%, #081723 100%);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Cg fill='none' stroke='%2384d9b3' stroke-opacity='0.22' stroke-width='1.5'%3E%3Cpath d='M120 180c40-40 90-55 150-45 65 10 91 58 151 63 50 4 86-22 126-44 41-22 93-38 144-20 32 11 52 34 86 41 51 12 103-13 150-16 68-5 136 29 171 84'/%3E%3Cpath d='M83 296c30-15 67-13 94 6 31 20 45 58 82 73 55 22 103-19 153-33 65-19 136 6 183 54 35 35 61 81 110 97 39 12 84 2 113-26 23-22 35-55 65-66 30-10 62 10 92 22'/%3E%3Cpath d='M243 125c20-14 39-40 67-39 22 1 40 20 62 24 26 4 52-12 78-10 29 3 51 29 80 33 36 5 69-23 105-22 29 1 54 21 82 28 22 5 47 1 64-14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 64px;
+}
+
+.hero,
+.section {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(8, 29, 43, 0.88), rgba(6, 18, 29, 0.92));
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 28px 28px 44px;
+}
+
+.hero::after,
+.section::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -35% auto;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(77, 161, 216, 0.12), transparent 68%);
+  pointer-events: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(7, 24, 38, 0.62);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(126, 199, 232, 0.14);
+}
+
+.brand,
+.nav-links a,
+.button {
+  text-decoration: none;
+}
+
+.brand {
+  color: var(--text);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--text);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.8fr);
+  align-items: center;
+  gap: 40px;
+  padding: 72px 16px 22px;
+}
+
+.eyebrow,
+.meta {
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  line-height: 1.04;
+}
+
+h1 {
+  margin-top: 10px;
+  max-width: 11ch;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+}
+
+.intro,
+.section-heading p,
+.timeline-card p,
+.project-card p,
+.destination-card p,
+.profile-details p {
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+.intro {
+  max-width: 62ch;
+  margin: 24px 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button.primary {
+  color: #072032;
+  background: linear-gradient(135deg, var(--green), #b0efd1);
+  box-shadow: 0 16px 32px rgba(79, 192, 141, 0.25);
+}
+
+.button.secondary {
+  color: var(--text);
+  background: rgba(77, 161, 216, 0.12);
+  border: 1px solid rgba(126, 199, 232, 0.22);
+}
+
+.profile-card,
+.timeline-card,
+.project-card,
+.destination-card,
+.map-surface {
+  border: 1px solid rgba(132, 217, 179, 0.16);
+  background: linear-gradient(180deg, rgba(11, 39, 57, 0.92), rgba(6, 21, 31, 0.94));
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.profile-card {
+  padding: 22px;
+}
+
+.photo-frame {
+  aspect-ratio: 1 / 1.15;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(126, 199, 232, 0.2), rgba(132, 217, 179, 0.18));
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-details {
+  margin-top: 18px;
+}
+
+.profile-details h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.section {
+  margin-top: 28px;
+  padding: 34px 28px;
+}
+
+.section-accent {
+  background:
+    linear-gradient(180deg, rgba(7, 26, 39, 0.94), rgba(6, 20, 31, 0.95)),
+    radial-gradient(circle at top right, rgba(77, 161, 216, 0.16), transparent 28%);
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  margin-top: 10px;
+  font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+}
+
+.timeline,
+.project-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.timeline {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.timeline-card,
+.project-card,
+.destination-card {
+  padding: 24px;
+}
+
+.timeline-card h3,
+.project-card h3,
+.destination-card h3 {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  font-size: 1.38rem;
+}
+
+.destinations-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.map-surface {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(7, 36, 49, 0.92), rgba(5, 21, 31, 0.95)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 500'%3E%3Crect width='900' height='500' fill='none'/%3E%3Cg fill='%234da1d8' fill-opacity='0.16'%3E%3Cpath d='M113 183l43-30 42-5 35-26 34 9 18 37 40 9 19 28-23 24-43 7-15 38-44 5-39-16-20-31-41-4-12-24z'/%3E%3Cpath d='M368 156l28-33 61-7 45 24 56-4 70 33 39 41-17 24-41 9-25 31-69 4-36 19-49-14-34-38-47-4-17-35z'/%3E%3Cpath d='M684 256l31-17 37 8 24 31 43 3 37 19-13 30-53 25-64 2-35-20-16-31z'/%3E%3Cpath d='M547 319l27-4 24 18 2 28-34 17-37-13 4-31z'/%3E%3Cpath d='M244 309l42-8 23 20-9 28-38 15-39-14-5-24z'/%3E%3C/g%3E%3Cg stroke='%2384d9b3' stroke-opacity='0.18'%3E%3Cpath d='M80 248h740M120 180h660M160 320h610'/%3E%3Cpath d='M220 96v280M420 72v320M620 88v290'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
+
+.pin {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 10px rgba(132, 217, 179, 0.08), 0 0 18px rgba(132, 217, 179, 0.45);
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 2px;
+  height: 12px;
+  background: rgba(132, 217, 179, 0.5);
+  transform: translateX(-50%);
+}
+
+.pin-1 {
+  top: 34%;
+  left: 22%;
+}
+
+.pin-2 {
+  top: 26%;
+  left: 46%;
+}
+
+.pin-3 {
+  top: 40%;
+  left: 56%;
+}
+
+.pin-4 {
+  top: 52%;
+  left: 67%;
+}
+
+.pin-5 {
+  top: 36%;
+  left: 78%;
+}
+
+.destination-list {
+  display: grid;
+  gap: 16px;
+}
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .destinations-layout,
+  .timeline,
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  h1 {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 10px;
+  }
+
+  .hero,
+  .section {
+    border-radius: 24px;
+  }
+
+  .hero {
+    padding: 18px 18px 28px;
+  }
+
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 22px;
+  }
+
+  .nav-links {
+    gap: 12px 14px;
+  }
+
+  .hero-grid {
+    gap: 26px;
+    padding: 44px 4px 8px;
+  }
+
+  .section {
+    padding: 26px 18px;
+  }
+
+  .map-surface {
+    min-height: 300px;
+  }
+}
